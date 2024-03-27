@@ -32,39 +32,39 @@ pub type AccountData = [[u8; FIELDSIZE]; ACCOUNTFIELDS];
 pub type HashScheme = extern "C" fn(*const u8, *const u8, *const u8, *mut u8) -> *const i8;
 type ProveCallback = extern "C" fn(*const u8, c_int, *mut c_void);
 
-#[link(name = "zktrie")]
-extern "C" {
-    fn InitHashScheme(f: HashScheme);
-    fn NewMemoryDb() -> *mut MemoryDb;
-    fn InitDbByNode(db: *mut MemoryDb, data: *const u8, sz: c_int) -> *const c_char;
-    fn NewZkTrie(root: *const u8, db: *const MemoryDb) -> *mut Trie;
-    fn FreeMemoryDb(db: *mut MemoryDb);
-    fn FreeZkTrie(trie: *mut Trie);
-    fn FreeBuffer(p: *const c_void);
-    fn TrieGetSize(trie: *const Trie, key: *const u8, key_sz: c_int, value_sz: c_int) -> *const u8;
-    fn TrieRoot(trie: *const Trie) -> *const u8;
+// #[link(name = "zktrie")]
+// extern "C" {
+    fn InitHashScheme(f: HashScheme) { todo!() }
+    fn NewMemoryDb() -> *mut MemoryDb { todo!() }
+    fn InitDbByNode(db: *mut MemoryDb, data: *const u8, sz: c_int) -> *const c_char { todo!() }
+    fn NewZkTrie(root: *const u8, db: *const MemoryDb) -> *mut Trie { todo!() }
+    fn FreeMemoryDb(db: *mut MemoryDb) { todo!() }
+    fn FreeZkTrie(trie: *mut Trie) { todo!() }
+    fn FreeBuffer(p: *const c_void) { todo!() }
+    fn TrieGetSize(trie: *const Trie, key: *const u8, key_sz: c_int, value_sz: c_int) -> *const u8 { todo!() }
+    fn TrieRoot(trie: *const Trie) -> *const u8 { todo!() }
     fn TrieUpdate(
         trie: *mut Trie,
         key: *const u8,
         key_sz: c_int,
         val: *const u8,
         val_sz: c_int,
-    ) -> *const c_char;
-    fn TrieDelete(trie: *mut Trie, key: *const u8, key_sz: c_int);
+    ) -> *const c_char { todo!() }
+    fn TrieDelete(trie: *mut Trie, key: *const u8, key_sz: c_int) { todo!() }
     fn TrieProve(
         trie: *const Trie,
         key: *const u8,
         key_sz: c_int,
         cb: ProveCallback,
         param: *mut c_void,
-    ) -> *const c_char;
-    fn NewTrieNode(data: *const u8, data_sz: c_int) -> *const TrieNode;
-    fn FreeTrieNode(node: *const TrieNode);
-    fn TrieNodeHash(node: *const TrieNode) -> *const u8;
-    fn TrieLeafNodeValueHash(node: *const TrieNode) -> *const u8;
-    fn TrieNodeIsTip(node: *const TrieNode) -> c_int;
-    fn TrieNodeData(node: *const TrieNode, value_sz: c_int) -> *const u8;
-}
+    ) -> *const c_char { todo!() }
+    fn NewTrieNode(data: *const u8, data_sz: c_int) -> *const TrieNode { todo!() }
+    fn FreeTrieNode(node: *const TrieNode) { todo!() }
+    fn TrieNodeHash(node: *const TrieNode) -> *const u8 { todo!() }
+    fn TrieLeafNodeValueHash(node: *const TrieNode) -> *const u8 { todo!() }
+    fn TrieNodeIsTip(node: *const TrieNode) -> c_int { todo!() }
+    fn TrieNodeData(node: *const TrieNode, value_sz: c_int) -> *const u8 { todo!() }
+// }
 
 pub fn init_hash_scheme(f: HashScheme) {
     unsafe { InitHashScheme(f) }
