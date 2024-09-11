@@ -26,7 +26,8 @@ fn main() {
 
     let mut build = gobuild::Build::new();
     if cfg!(target_os = "macos") {
-        build.ldflags("-w");
+        // error[E0599]: no method named `ldflags` found for struct `Build` in the current scope
+        // build.ldflags("-w");
     }
     build.buildmode(build_mode);
     // Build
